@@ -542,14 +542,17 @@ static u16 u16ReadAxisData(u8 AxisMask)
     {
         L3G4200D_READ_OUT_X_L(&u8RegData1);
         L3G4200D_READ_OUT_X_H(&u8RegData2);
-        u16AxisData = u8RegData1 | ((u16)(((8u)(u8RegData2)<<8u)));
     }
     break;
     case u8NEW_DATA_AVAILABEL_Y_MASK:
     {
         L3G4200D_READ_OUT_Y_L(&u8RegData1);
         L3G4200D_READ_OUT_Y_H(&u8RegData2);
-        u16AxisData = u8RegData1 | ((u16)(((8u)(u8RegData2)<<8u)));
+
+//        u16AxisData =   ( (u16)(u8RegData1) )|( (u16)((u8)(u8RegData2)<<7)) );
+
+
+       (u16AxisData) =( (u16)(u8RegData1)  | ( (u16) ( ( (8u)(u8RegData2)<<8u) ) )  );
     }
     break;
     case u8NEW_DATA_AVAILABEL_Z_MASK:
